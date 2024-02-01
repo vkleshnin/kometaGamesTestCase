@@ -5,10 +5,10 @@ using Zenject;
 
 namespace UI
 {
-	[RequireComponent(typeof(TextMeshProUGUI))]
-	public sealed class TurnInfo : MonoBehaviour
+	public sealed class UIManager : MonoBehaviour
 	{
-		private TextMeshProUGUI _text;
+		[SerializeField] private GameObject winTab;
+		[SerializeField] private TextMeshProUGUI headText;
 		private string _turnMessage = "The move for the ";
 		private string _crossName = "Cross";
 		private string _circleName = "Circle";
@@ -25,25 +25,26 @@ namespace UI
 			switch (result)
 			{
 				case EResult.OWin:
-					_text.text = $"{_circleName} wins!";
+					headText.text = $"{_circleName} wins!";
 					break;
 				case EResult.CrossWin:
-					_text.text = $"{_crossName} wins!";
+					headText.text = $"{_crossName} wins!";
 					break;
 				case EResult.Draw:
-					_text.text = $"Draw!";
+					headText.text = $"Draw!";
 					break;
 			}
+
+			OpenWinTab();
 		}
 
 		private void SetTurnMessage()
 		{
-			_text.text = $"{_turnMessage} {(_gameplay.Move == PlayerType.Circle ? _circleName : _crossName)}.";
+			headText.text = $"{_turnMessage} {(_gameplay.Move == PlayerType.Circle ? _circleName : _crossName)}.";
 		}
 
 		private void Start()
 		{
-			_text = GetComponent<TextMeshProUGUI>();
 			SetTurnMessage();
 			_gameplay.StartMove += SetTurnMessage;
 			_gameplay.EndGame += SetResultText;
@@ -53,6 +54,11 @@ namespace UI
 		{
 			_gameplay.EndMove -= SetTurnMessage;
 			_gameplay.EndGame -= SetResultText;
+		}
+
+		private void OpenWinTab()
+		{
+			winTab.SetActive(true);
 		}
 	}
 }

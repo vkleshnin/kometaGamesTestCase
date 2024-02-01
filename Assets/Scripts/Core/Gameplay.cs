@@ -15,7 +15,6 @@ namespace Core
 		public PlayerType Move { get; set; }
 		private Validation _validation;
 		private GameBoard _gameBoard;
-		private TurnInfo _turnInfo;
 		private DataManager _dataManager;
 
 		[Inject]
