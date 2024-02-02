@@ -42,7 +42,6 @@ namespace Core
 			EResult result = _validation.Validate(_gameBoard.FieldValue);
 			if (result != EResult.NotFinished)
 			{
-				Debug.Log($"result game = {result}");
 				EndGame.Invoke(result);
 				
 				int[][] field = new int[_gameBoard.fieldSize][];
@@ -52,6 +51,7 @@ namespace Core
 				}
 				
 				_dataManager.Save(field, Move);
+				Debug.Log($"Result game - {result}");
 				return ;
 			}
 			_dataManager.Save(_gameBoard.FieldValue, Move);

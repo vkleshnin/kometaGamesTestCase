@@ -20,7 +20,7 @@ public class DataManager
 		};
 		
 		string json = Newtonsoft.Json.JsonConvert.SerializeObject(saveData);
-		Debug.Log(json);
+		Debug.Log($"FIle save: {json}");
 		File.WriteAllText(Application.persistentDataPath + "/save.json", json);
 	}
 

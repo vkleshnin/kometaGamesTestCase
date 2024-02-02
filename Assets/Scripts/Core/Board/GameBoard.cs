@@ -63,9 +63,9 @@ namespace Core.Board
 					cellComponent.Position = new FieldPosition(x, y);
 					if (FieldValue[x][y] == 0) continue;
 					cellComponent.Fill((PlayerType)FieldValue[x][y]);
-					Debug.Log($"[{x},{y}] = {FieldValue[x][y]}");
 				}
 			}
+			Debug.Log("GameBoard has been initialized.");
 		}
 
 		private void CleanField()
@@ -74,6 +74,7 @@ namespace Core.Board
 			{
 				Destroy(child.gameObject);
 			}
+			Debug.Log("GameBoard has been cleaned.");
 		}
 
 		public void DisableButtons()
@@ -82,6 +83,7 @@ namespace Core.Board
 			{
 				cell.button.interactable = false;
 			}
+			Debug.Log("Buttons disabled.");
 		}
 
 		public void EnableButtons()
@@ -90,6 +92,7 @@ namespace Core.Board
 			{
 				cell.button.interactable = true;
 			}
+			Debug.Log("Buttons enabled.");
 		}
 	}
 }

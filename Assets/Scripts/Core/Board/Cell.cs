@@ -47,12 +47,13 @@ namespace Core.Board
 			if (IsFilled) return;
 			
 			IsFilled = true;
-			Debug.Log($"Try move to {Position.X} {Position.Y}");
 			_gameBoard.FieldValue[Position.X][ Position.Y] = (sbyte)_gameplay.Move;
 			Instantiate(_gameplay.Move == PlayerType.Circle ? oPrefab : crossPrefab, transform);
 			
 			_gameplay.EndMove.Invoke();
 			button.interactable = false;
+			
+			Debug.Log($"Cell {Position.X} {Position.Y} filled. Field value: {_gameBoard.FieldValue[Position.X][ Position.Y]}");
 		}
 
 		public void Fill(PlayerType playerType)
@@ -60,6 +61,7 @@ namespace Core.Board
 			IsFilled = true;
 			Instantiate(playerType == PlayerType.Circle ? oPrefab : crossPrefab, transform);
 			button.interactable = false;
+			Debug.Log($"Cell {Position.X} {Position.Y} filled. Field value: {_gameBoard.FieldValue[Position.X][ Position.Y]}");
 		}
 	}
 }
