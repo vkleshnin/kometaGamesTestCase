@@ -8,10 +8,10 @@ public class DataManager
 	public class SaveData
 	{
 		public int[][] FieldValues;
-		public PlayerType lastMove;
+		public EPlayerType lastMove;
 	}
 	
-	public void Save(int[][] fieldValues, PlayerType _lastMove)
+	public void Save(int[][] fieldValues, EPlayerType _lastMove)
 	{
 		var saveData = new SaveData
 		{

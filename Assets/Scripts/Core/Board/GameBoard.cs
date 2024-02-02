@@ -62,7 +62,7 @@ namespace Core.Board
 					_cells.Add(cellComponent);
 					cellComponent.Position = new FieldPosition(x, y);
 					if (FieldValue[x][y] == 0) continue;
-					cellComponent.Fill((PlayerType)FieldValue[x][y]);
+					cellComponent.Fill((EPlayerType)FieldValue[x][y]);
 				}
 			}
 			Debug.Log("GameBoard has been initialized.");

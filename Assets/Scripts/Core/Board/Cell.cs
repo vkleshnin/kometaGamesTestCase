@@ -48,7 +48,7 @@ namespace Core.Board
 			
 			IsFilled = true;
 			_gameBoard.FieldValue[Position.X][ Position.Y] = (sbyte)_gameplay.Move;
-			Instantiate(_gameplay.Move == PlayerType.Circle ? oPrefab : crossPrefab, transform);
+			Instantiate(_gameplay.Move == EPlayerType.Circle ? oPrefab : crossPrefab, transform);
 			
 			_gameplay.EndMove.Invoke();
 			button.interactable = false;
@@ -56,10 +56,10 @@ namespace Core.Board
 			Debug.Log($"Cell {Position.X} {Position.Y} filled. Field value: {_gameBoard.FieldValue[Position.X][ Position.Y]}");
 		}
 
-		public void Fill(PlayerType playerType)
+		public void Fill(EPlayerType ePlayerType)
 		{
 			IsFilled = true;
-			Instantiate(playerType == PlayerType.Circle ? oPrefab : crossPrefab, transform);
+			Instantiate(ePlayerType == EPlayerType.Circle ? oPrefab : crossPrefab, transform);
 			button.interactable = false;
 			Debug.Log($"Cell {Position.X} {Position.Y} filled. Field value: {_gameBoard.FieldValue[Position.X][ Position.Y]}");
 		}

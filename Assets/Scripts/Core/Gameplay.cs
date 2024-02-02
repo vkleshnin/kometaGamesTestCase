@@ -12,7 +12,7 @@ namespace Core
 		public Action EndMove;
 		public Action<EResult> EndGame;
 		
-		public PlayerType Move { get; set; }
+		public EPlayerType Move { get; set; }
 		private Validation _validation;
 		private GameBoard _gameBoard;
 		private DataManager _dataManager;
@@ -27,7 +27,7 @@ namespace Core
 			_gameBoard = gameBoard;
 			_dataManager = dataManager;
 			var saveData = _dataManager.Load();
-			Move = saveData?.lastMove ?? PlayerType.Cross;
+			Move = saveData?.lastMove ?? EPlayerType.Cross;
 		}
 
 		private void OnEndGame(EResult result)
@@ -37,7 +37,7 @@ namespace Core
 
 		private void OnEndMove()
 		{
-			Move = Move == PlayerType.Circle ? PlayerType.Cross : PlayerType.Circle;
+			Move = Move == EPlayerType.Circle ? EPlayerType.Cross : EPlayerType.Circle;
 			
 			EResult result = _validation.Validate(_gameBoard.FieldValue);
 			if (result != EResult.NotFinished)

@@ -40,7 +40,7 @@ namespace UI
 
 		private void SetTurnMessage()
 		{
-			headText.text = $"{_turnMessage} {(_gameplay.Move == PlayerType.Circle ? _circleName : _crossName)}.";
+			headText.text = $"{_turnMessage} {(_gameplay.Move == EPlayerType.Circle ? _circleName : _crossName)}.";
 		}
 
 		private void Start()

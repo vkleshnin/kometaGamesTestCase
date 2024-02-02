@@ -1,6 +1,6 @@
 ﻿namespace Core
 {
-	public enum PlayerType
+	public enum EPlayerType
 	{
 		Circle = -1,
 		Cross = 1
